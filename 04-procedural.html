@@ -95,8 +95,8 @@ printf("Vous avez %d ans.\n", age);</code></pre>
             récupérer l'adresse mémoire de la variable <code>age</code>.
         </p>
         <p>
-            Cela est dû au fait que les paramètres de la fonction <code>scanf()</code> sont passés par référence
-            contrairement à la fonction <code>printf()</code> qui les passe par valeur.
+            En C, tous les paramètres sont passés par valeur : pour que <code>scanf()</code> puisse modifier
+            la variable, on lui transmet donc son <strong>adresse</strong>.
         </p>
         <p>
             Dans les deux cas, il est nécessaire de préciser le type de la variable à l'aide de symboles comme

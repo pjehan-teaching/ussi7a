@@ -496,7 +496,9 @@ for (String item : list) {
             En Java, l'introspection est réalisée à l'aide de la classe <code>Class</code> qui permet d'obtenir des informations
             sur une classe à l'exécution :
         </p>
-        <pre><code class="language-java">public class ReflectionExample {
+        <pre><code class="language-java">import java.util.Arrays;
+
+public class ReflectionExample {
     public static void main(String[] args) {
         Class&lt;?&gt; stringClass = String.class;
 
@@ -512,7 +514,9 @@ for (String item : list) {
         <p>
             En Java, l'intercession permet d'appeler des méthodes et de modifier des attributs d'un objet à l'exécution :
         </p>
-        <pre><code class="language-java">public class ReflectionExample {
+        <pre><code class="language-java">import java.lang.reflect.Method;
+
+public class ReflectionExample {
     public static void main(String[] args) throws Exception {
         Class&lt;?&gt; stringClass = String.class;
         Object obj = stringClass.getConstructor(String.class).newInstance("Hello, World!");

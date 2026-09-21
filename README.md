@@ -1,6 +1,6 @@
 # USSI7A
 
-[ussi7a.slides.pierre-jehan.com](http://utc503.slides.pierre-jehan.com)
+[ussi7a.slides.pierre-jehan.com](http://ussi7a.slides.pierre-jehan.com)
 
 ## Installation
 

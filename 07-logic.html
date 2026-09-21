@@ -42,7 +42,7 @@
         <div class="container">
             <div class="col">
                 <h4>macOS</h4>
-                <pre class="language-bash"><code>brew install gnu-prolog</code></pre>
+                <pre class="language-bash"><code>brew install swi-prolog</code></pre>
             </div>
             <div class="col">
                 <h4>Windows</h4>
@@ -51,11 +51,11 @@ scoop install swipl</code></pre>
             </div>
         </div>
         <p>
-            Vous pouvez ensuite exécuter Prolog en tapant la commande <code>prolog</code> dans un terminal ou bien
-            en créant un fichier avec l'extension <code>.pl</code> et en l'exécutant avec la commande suivante :
+            Vous pouvez ensuite lancer l'interpréteur avec la commande <code>swipl</code> puis charger un
+            fichier <code>.pl</code>, ou bien exécuter directement ce fichier :
         </p>
-        <pre><code class="language-shell">gprolog
-| ?- [hello].</code></pre>
+        <pre><code class="language-shell">swipl
+?- [hello].</code></pre>
         <pre><code class="language-shell">swipl -s hello.pl</code></pre>
         <p>
             Vous pouvez également utiliser un <a href="https://swish.swi-prolog.org/" target="_blank">interpréteur en ligne</a>
@@ -294,8 +294,8 @@ X = dog</code></pre>
         <p>
             Voici quelques exemples d'unification en Prolog :
         </p>
-        <pre><code class="language-prolog">?- 1 = 1. % yes
-?- 1 + 1 = 2. % no (ici, Prolog ne fait pas d'évaluation arithmétique et compare en réalité '+'(1, 1) avec 2)
+        <pre><code class="language-prolog">?- 1 = 1. % true
+?- 1 + 1 = 2. % false (ici, Prolog ne fait pas d'évaluation arithmétique et compare en réalité '+'(1, 1) avec 2)
 ?- X = 42 + 3. % X = 42+3</code></pre>
         <p>
             En utilisant l'unification et les variables avec des règles, on peut déduire de nouvelles informations à
@@ -343,11 +343,14 @@ X = dog</code></pre>
         </p>
         <p>
             Une liste vide est représentée par le symbole <code>[]</code>. Une liste non vide est représentée par
-            un <strong>terme composé</strong> avec un <strong>foncteur</strong> <code>.</code> et deux arguments :
+            un <strong>terme composé</strong> de deux arguments :
             la <strong>tête</strong> de la liste et la <strong>queue</strong> de la liste.
         </p>
         <p>
-            Par exemple, la liste <code>[1, 2, 3]</code> est représentée en Prolog par <code>[1, [2, [3, []]]]</code>.
+            Par exemple, la liste <code>[1, 2, 3]</code> est en interne une imbrication de termes composés,
+            chacun portant la tête et le reste de la liste :
+            <code>'[|]'(1, '[|]'(2, '[|]'(3, [])))</code> dans SWI-Prolog
+            (le foncteur est <code>'.'</code> dans la norme ISO et dans GNU Prolog).
         </p>
         <p>
             Il existe en Prolog des predicats prédéfinis pour manipuler les listes, comme <code>member</code>,
@@ -360,7 +363,7 @@ X = dog</code></pre>
         <p>
             Voici quelques exemples de manipulation de listes en Prolog :
         </p>
-        <pre><code class="language-prolog">?- member(2, [1, 2, 3]). % yes
+        <pre><code class="language-prolog">?- member(2, [1, 2, 3]). % true
 ?- append([1, 2], [3, 4], X). % X = [1, 2, 3, 4]
 ?- reverse([1, 2, 3], X). % X = [3, 2, 1]</code></pre>
         <p>
